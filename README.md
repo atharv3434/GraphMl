@@ -104,7 +104,6 @@ docker run -v $(pwd)/data:/app/data -v $(pwd)/checkpoints:/app/checkpoints graph
 docker run -v $(pwd)/checkpoints:/app/checkpoints graph-ml predict --node-id 0
 ```
 
-
 ## Extending
 
 - **Link prediction / edge-level tasks**: swap the classification head for a
