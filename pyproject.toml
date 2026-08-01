@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-ml-pipeline"
+version = "0.1.0"
+description = "Production-ready node classification pipeline (PyTorch Geometric: GCN/GraphSAGE/GAT)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.1.0",
+    "torch_geometric>=2.4.0",
+    "scikit-learn>=1.3.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "pyyaml>=6.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+graph-ml = "graph_ml.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,35 @@
+# Default configuration for the node classification GNN pipeline
+
+data:
+  nodes_csv: "data/raw/nodes.csv"     # columns: node_id, feature_1..feature_N, label, split(optional)
+  edges_csv: "data/raw/edges.csv"     # columns: source, target
+  node_id_column: "node_id"
+  label_column: "label"
+  split_column: "split"                # optional; if absent, split is generated from the ratios below
+  train_ratio: 0.6
+  val_ratio: 0.2                        # test_ratio is implied as the remainder
+  random_state: 42
+  directed: false                       # if false, edges are treated as undirected (both directions added)
+
+model:
+  type: "graphsage"                     # gcn | graphsage | gat
+  hidden_dim: 64
+  num_layers: 2
+  dropout: 0.5
+  heads: 4                              # only used by GAT
+
+training:
+  epochs: 200
+  lr: 0.01
+  weight_decay: 0.0005
+  early_stopping_patience: 20
+  device: "auto"                        # auto | cpu | cuda
+  seed: 42
+
+output:
+  model_dir: "checkpoints"
+  model_name: "gnn_model.pt"
+  metrics_path: "checkpoints/metrics.json"
+
+logging:
+  level: "INFO"
